@@ -15,6 +15,6 @@ public class Junit2ApplicationTests {
 	public void contextLoads() {
 		assertTrue(1==1);
 	}
-  
+
 
 }

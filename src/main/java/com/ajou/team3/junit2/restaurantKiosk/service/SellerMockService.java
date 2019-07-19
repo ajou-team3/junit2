@@ -16,20 +16,24 @@ public class SellerMockService {
         return sellerMockRepository.findAll();
     }
 
-    public Meal getMealByName(String foodName){ //lee won woo
+    public Meal getMealByName(String mealName){ //lee won woo
         List<Meal> meals=findAllMeal();
         for(Meal meal : meals){
-            if(foodName.equals(meal.getMealName())){
+            if(mealName.equals(meal.getMealName())){
                 return meal;
             }
         }
         return null;
     }
 
-     public Meal updateMealByName(String foodName){ //lee won woo
+     public Meal updateMealByName(String mealName,int newMealPrice, int newMealRemaining){ //lee won woo
         List<Meal> meals=findAllMeal();
         for(Meal meal : meals){
-            return meal;
+            if(mealName.equals(meal.getMealName())){
+                meal.setMealPrice(newMealPrice);
+                meal.setMealRemaining(newMealRemaining);
+                return meal;
+            }
         }
          return null;
 
