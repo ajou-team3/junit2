@@ -12,7 +12,7 @@ public class CustomerMockService {
         this.customerMockRepository = customerMockRepository;
     }
 
-    public Meal orderMealByName(String mealName) {
+    public Meal orderMealByName(String mealName) { // lee yong jae
         Meal meal = customerMockRepository.orderMealByName(mealName);
         return meal;
     }
