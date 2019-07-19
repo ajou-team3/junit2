@@ -1,4 +1,4 @@
-package com.ajou.team3.junit2;
+package com.ajou.team3.junit2.restaurantKiosk;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

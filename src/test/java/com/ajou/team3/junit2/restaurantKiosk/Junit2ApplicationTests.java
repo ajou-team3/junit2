@@ -1,4 +1,4 @@
-package com.ajou.team3.junit2;
+package com.ajou.team3.junit2.restaurantKiosk;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
