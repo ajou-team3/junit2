@@ -13,29 +13,19 @@ public class SellerMockService {
     }
 
     public List<Meal> findAllMeal() {
-        return sellerMockRepository.findAll();
+        return sellerMockRepository.findAllMeal();
     }
 
     public Meal getMealByName(String mealName){ //lee won woo
-        List<Meal> meals=findAllMeal();
-        for(Meal meal : meals){
-            if(mealName.equals(meal.getMealName())){
-                return meal;
-            }
-        }
-        return null;
+        Meal meals=sellerMockRepository.getMealByName(mealName);
+        return meals;
     }
 
      public Meal updateMealByName(String mealName,int newMealPrice, int newMealRemaining){ //lee won woo
-        List<Meal> meals=findAllMeal();
-        for(Meal meal : meals){
-            if(mealName.equals(meal.getMealName())){
-                meal.setMealPrice(newMealPrice);
-                meal.setMealRemaining(newMealRemaining);
-                return meal;
-            }
-        }
-         return null;
+        Meal meal =sellerMockRepository.getMealByName(mealName);
+        meal.setMealRemaining(newMealRemaining);
+        meal.setMealPrice(newMealPrice);
+        return meal;
 
      }
 }
