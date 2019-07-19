@@ -12,5 +12,10 @@ public class CustomerMockService {
         this.customerMockRepository = customerMockRepository;
     }
 
-    
+    public void addMealinCart(Meal meal){
+        Meal addMeal = new Meal(meal.getMealName(), meal.getMealPrice(), meal.getMealRemaining());
+        customerMockRepository.addMealinCart(addMeal);
+        return;
+    }
+
 }
