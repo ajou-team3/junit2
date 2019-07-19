@@ -12,7 +12,7 @@ public class SellerMockService {
         this.sellerMockRepository = sellerMockRepository;
     }
 
-    public List<Meal> findAllMeal() {
+    public List<Meal> findAllMeal() { // lee yong jae
         return sellerMockRepository.findAllMeal();
     }
 
