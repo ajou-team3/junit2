@@ -15,4 +15,17 @@ public class SellerMockService {
     public List<Meal> findAllMeal() {
         return sellerMockRepository.findAllMeal();
     }
+
+    public Meal getMealByName(String mealName){ //lee won woo
+        Meal meals=sellerMockRepository.getMealByName(mealName);
+        return meals;
+    }
+
+     public Meal updateMealByName(String mealName,int newMealPrice, int newMealRemaining){ //lee won woo
+        Meal meal =sellerMockRepository.getMealByName(mealName);
+        meal.setMealRemaining(newMealRemaining);
+        meal.setMealPrice(newMealPrice);
+        return meal;
+
+     }
 }
