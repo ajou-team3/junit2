@@ -13,6 +13,21 @@ public class SellerMockService {
     }
 
     public List<Meal> findAllMeal() {
-        return sellerMockRepository.findAllMeal();
+        return sellerMockRepository.findAll();
     }
+
+    public Meal getMealByName(String foodName){ //lee won woo
+        List<Meal> meals=findAllMeal();
+        for(Meal meal : meals){
+            if()
+        }
+    }
+
+     public Meal updateMealByName(String foodName){ //lee won woo
+        List<Meal> meals=findAllMeal();
+        for(Meal meal : meals){
+
+        }
+
+     }
 }

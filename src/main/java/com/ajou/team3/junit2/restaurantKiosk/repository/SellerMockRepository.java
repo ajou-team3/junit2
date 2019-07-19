@@ -7,5 +7,6 @@ import java.util.List;
 public interface SellerMockRepository {
     public Meal getFoodByName(String mealName);
     public Meal updateFoodByName(String mealName);
-    public List<Meal> findAllMeal();
+    public List<Meal> findAll(); //findAllMeal에서 수정
+
 }
