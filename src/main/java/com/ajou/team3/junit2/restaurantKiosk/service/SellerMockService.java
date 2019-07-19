@@ -19,15 +19,19 @@ public class SellerMockService {
     public Meal getMealByName(String foodName){ //lee won woo
         List<Meal> meals=findAllMeal();
         for(Meal meal : meals){
-            if()
+            if(foodName.equals(meal.getMealName())){
+                return meal;
+            }
         }
+        return null;
     }
 
      public Meal updateMealByName(String foodName){ //lee won woo
         List<Meal> meals=findAllMeal();
         for(Meal meal : meals){
-
+            return meal;
         }
+         return null;
 
      }
 }
