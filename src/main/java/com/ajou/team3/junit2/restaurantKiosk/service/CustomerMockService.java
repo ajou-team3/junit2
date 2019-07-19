@@ -17,5 +17,12 @@ public class CustomerMockService {
         customerMockRepository.addMealinCart(addMeal);
         return;
     }
+    public int getTotalPrice(List<Meal> meal){
+        int totalPrice = 0;
+        for(int i=0; i<meal.size(); i++){
+            totalPrice += meal.get(i).getMealPrice();
+        }
+        return totalPrice;
+    }
 
 }
