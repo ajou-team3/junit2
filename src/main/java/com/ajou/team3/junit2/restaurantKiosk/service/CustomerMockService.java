@@ -17,12 +17,12 @@ public class CustomerMockService {
         return meal;
     }
 
-    public void addMealinCart(Meal meal){
+    public void addMealinCart(Meal meal){  //lee yeon ju
         Meal addMeal = new Meal(meal.getMealName(), meal.getMealPrice(), meal.getMealRemaining());
         customerMockRepository.addMealinCart(addMeal);
         return;
     }
-    public int getTotalPrice(List<Meal> meal){
+    public int getTotalPrice(List<Meal> meal){ //lee yeon ju
         int totalPrice = 0;
         for(int i=0; i<meal.size(); i++){
             totalPrice += meal.get(i).getMealPrice();
