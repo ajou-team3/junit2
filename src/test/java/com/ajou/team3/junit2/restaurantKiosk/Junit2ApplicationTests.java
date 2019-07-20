@@ -43,14 +43,11 @@ public class Junit2ApplicationTests {
     public void customerAddMealToCartTest() {
         when(mealMockRepository.getMealByName(anyString()))
                 .thenReturn(new Meal("meal", 3000, 3));
-
         int totalPrice;
         totalPrice = customerMockService.addMealToCart(anyString());
         assertThat(totalPrice, is(3000));
-
         totalPrice = customerMockService.addMealToCart(anyString());
         assertThat(totalPrice, is(6000));
-
         assertThat(customerMockService.getCustomerCartSize(), is(2));
     }
 

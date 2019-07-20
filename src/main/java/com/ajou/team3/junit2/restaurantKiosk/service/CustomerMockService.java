@@ -11,7 +11,7 @@ public class CustomerMockService {
     private final CustomerMockRepository customerMockRepository;
     private final MealMockRepository mealMockRepository;
 
-//    public CustomerMockService(CustomerMockRepository customerMockRepository) {
+    //    public CustomerMockService(CustomerMockRepository customerMockRepository) {
 //        this.customerMockRepository = customerMockRepository;
 //    }
     //
@@ -23,7 +23,7 @@ public class CustomerMockService {
     }
 
     public Meal orderMealByName(String mealName) { // lee yong jae
-        Meal meal = customerMockRepository.orderMealByName(mealName);
+        Meal meal = mealMockRepository.orderMealByName(mealName);
         return meal;
     }
 
