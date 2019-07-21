@@ -19,7 +19,7 @@ public class SellerMockService {
     public List<Meal> findAllMeal() { // lee yong jae
         List<Meal> meals = mealMockRepository.findAllMeal();
         if(meals.isEmpty()){
-            throw new NullPointerException("리스트가 존재하지 않습니다")
+            throw new NullPointerException("리스트가 존재하지 않습니다");
         } else {
             return mealMockRepository.findAllMeal();
         }
@@ -35,10 +35,7 @@ public class SellerMockService {
     }
 
      public Meal updateMealByName(String mealName, int newMealPrice, int newMealRemaining){ //lee won woo
-        Meal meal =mealMockRepository.getMealByName(mealName);
-
-        meal.setMealRemaining(newMealRemaining);
-        meal.setMealPrice(newMealPrice);
-        return meal;
+        Meal meal = mealMockRepository.getMealByName(mealName);
+        return mealMockRepository.updateMealByName(mealName, newMealPrice, newMealRemaining);
      }
 }
