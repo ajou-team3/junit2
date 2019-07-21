@@ -8,15 +8,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.hamcrest.Matchers.is;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class Junit2ApplicationTests {
 
@@ -86,4 +89,52 @@ public class Junit2ApplicationTests {
     }
 
 
+    //박수린
+    @Test
+    public void sellerFindAllMealTet(){
+        List<Meal> meals = new ArrayList<>();
+        meals.add(new Meal("meal", 5000, 50));
+        meals.add(new Meal("meal2", 500000, 4000));
+        when(mealMockRepository.findAllMeal()).thenReturn(meals);
+
+        assertThat(sellerMockService.findAllMeal().get(0).getMealName(), is("meal"));
+        assertThat(sellerMockService.findAllMeal().get(1).getMealName(), is("meal2"));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sellerFindAllMealButNothingInListTest(){
+        List<Meal> meals = new ArrayList<>();
+        assertThat(meals.isEmpty(), is(true));
+        when(mealMockRepository.findAllMeal()).thenReturn(meals);
+        sellerMockService.findAllMeal();
+    }
+
+    @Test
+    public void sellerGetMealByNameTest(){
+        when(mealMockRepository.getMealByName(anyString())).thenReturn(new Meal("비빔밥", 6500, 30));
+        assertThat(sellerMockService.getMealByName(anyString()).getMealName(), is("비빔밥"));
+        assertThat(sellerMockService.getMealByName(anyString()).getMealPrice(), is(6500));
+        assertThat(sellerMockService.getMealByName(anyString()).getMealRemaining(), is(30));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sellerGetExceptionWhenGetMealThatDoesNotExistTest(){
+        when(mealMockRepository.getMealByName("doesNotExist")).thenReturn(null);
+        sellerMockService.getMealByName("doesNotExist");
+    }
+
+    @Test
+    public void sellerUpdateMealTest(){
+        when(mealMockRepository.updateMealByName("update", 3000, 0))
+                .thenReturn(new Meal("update", 5000, 30));
+        assertThat(sellerMockService.updateMealByName("update", 3000, 0).getMealName(), is("update"));
+        assertThat(sellerMockService.updateMealByName("update", 3000, 0).getMealPrice(), is(5000));
+        assertThat(sellerMockService.updateMealByName("update", 3000, 0).getMealRemaining(), is(30));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void sellerGetExceptionWhenUpdateMealThatDoesNotExistTest(){
+        doThrow(new NullPointerException()).when(mealMockRepository).getMealByName("doesNotExist");
+        sellerMockService.updateMealByName("doesNotExist", 3000, 30);
+    }
 }
